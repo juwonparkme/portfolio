@@ -772,18 +772,6 @@ const skillsCatalog = [
         ],
       },
       {
-        slug: "lang-scss",
-        label: { ko: "SCSS", en: "SCSS" },
-        summary: {
-          ko: "juwon_blog 저장소에서 확인된 스타일 전처리 언어입니다.",
-          en: "A style preprocessor language confirmed from the juwon_blog repository.",
-        },
-        posts: [
-          { title: "Jekyll 자동배포", url: "https://juwonpark.me/firstblogpost.html", excerpt: { ko: "Jekyll 블로그 구조와 테마 커스터마이징 출발점.", en: "A starting point for Jekyll blog structure and theme customization." }, tags: ["SCSS", "Jekyll", "Theme"] },
-          { title: "Text Manipulation", url: "https://juwonpark.me/Text_Manipulation.html", excerpt: { ko: "블로그/콘텐츠 스타일링과 함께 본 자동화 글.", en: "An automation note viewed alongside blog/content styling work." }, tags: ["SCSS", "Content", "Blog"] },
-        ],
-      },
-      {
         slug: "lang-ruby",
         label: { ko: "Ruby", en: "Ruby" },
         summary: {
@@ -832,7 +820,7 @@ const skillsCatalog = [
       },
       {
         slug: "lang-swift",
-        label: { ko: "Swift", en: "Swift" },
+        label: { ko: "PDF Rendering", en: "PDF Rendering" },
         summary: {
           ko: "cardnews_auto 저장소에서 확인된 언어입니다. 자동화 파이프라인과 함께 보이도록 연결했습니다.",
           en: "A language confirmed from the cardnews_auto repository, linked alongside the automation pipeline posts.",
@@ -980,7 +968,6 @@ const renderSkillSpotlight = (skill, lang) => {
     <div class="skills-spotlight-head">
       <div>
         <h3 class="skills-spotlight-title">${skill.label[lang]}</h3>
-        <p class="skills-spotlight-summary">${skill.summary[lang]}</p>
       </div>
       <p class="skills-spotlight-count">${skill.posts.length}${bundle.skills_count_suffix}</p>
     </div>

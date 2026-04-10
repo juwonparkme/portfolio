@@ -977,7 +977,7 @@ body.pdf-export .topbar {
 }
 
 body.pdf-export .content {
-  padding: 0 0 2rem;
+  padding: 2rem 1.8rem 2rem;
 }
 
 body.pdf-export .section {
@@ -1028,7 +1028,7 @@ body.pdf-export .skills-post-card {
   }
 
   .content {
-    padding: 0 !important;
+    padding: 2rem 1.8rem 2rem !important;
   }
 
   .section {
