@@ -1131,11 +1131,68 @@ langButtons.forEach((button) => {
 });
 
 if (pdfExportButton) {
-  pdfExportButton.addEventListener("click", () => {
-    const pdfUrl = new URL(window.location.href);
-    pdfUrl.searchParams.set("pdf", "1");
-    pdfUrl.searchParams.set("print", "1");
-    window.open(pdfUrl.toString(), "_blank", "noopener,noreferrer");
+  pdfExportButton.addEventListener("click", async () => {
+    const source = document.querySelector(".content");
+
+    if (!source) {
+      return;
+    }
+
+    if (typeof window.html2pdf !== "function") {
+      const pdfUrl = new URL(window.location.href);
+      pdfUrl.searchParams.set("pdf", "1");
+      pdfUrl.searchParams.set("print", "1");
+      window.open(pdfUrl.toString(), "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    const originalLabel = pdfExportButton.textContent;
+    pdfExportButton.disabled = true;
+    pdfExportButton.textContent = currentLanguage === "en" ? "Generating..." : "생성 중...";
+
+    if (!isPdfMode) {
+      document.body.classList.add("pdf-export");
+    }
+
+    try {
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+
+      await new Promise((resolve) => window.setTimeout(resolve, 180));
+
+      const exporter = window.html2pdf();
+      await exporter
+        .set({
+          margin: [8, 8, 10, 8],
+          filename: "juwon-park-devops-portfolio.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            scrollX: 0,
+            scrollY: 0,
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          },
+          pagebreak: {
+            mode: ["css", "legacy"],
+          },
+        })
+        .from(source)
+        .save();
+    } finally {
+      if (!isPdfMode) {
+        document.body.classList.remove("pdf-export");
+      }
+
+      pdfExportButton.disabled = false;
+      pdfExportButton.textContent = originalLabel;
+    }
   });
 }
 
