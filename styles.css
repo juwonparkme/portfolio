@@ -207,6 +207,32 @@ h1 {
   align-items: center;
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pdf-export-button {
+  appearance: none;
+  border: 1px solid rgba(91, 92, 240, 0.18);
+  border-radius: 999px;
+  background: rgba(91, 92, 240, 0.08);
+  color: var(--accent-strong);
+  padding: 0.62rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.pdf-export-button:hover {
+  background: rgba(91, 92, 240, 0.14);
+  border-color: rgba(91, 92, 240, 0.28);
+  transform: translateY(-1px);
+}
+
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -950,6 +976,12 @@ h2 {
     width: 100%;
   }
 
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
   .hero-display span {
     font-size: clamp(3.2rem, 18vw, 4.8rem);
   }
@@ -997,9 +1029,9 @@ body.pdf-export .project-card-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-body.pdf-export .project-spotlight {
-  position: static;
-  box-shadow: none;
+body.pdf-export .project-spotlight,
+body.pdf-export .skills-spotlight {
+  display: none;
 }
 
 body.pdf-export .experience-card,
@@ -1048,8 +1080,9 @@ body.pdf-export .skills-post-card {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  .project-spotlight {
-    position: static;
+  .project-spotlight,
+  .skills-spotlight {
+    display: none !important;
   }
 
   .experience-card,

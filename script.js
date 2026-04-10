@@ -3,6 +3,8 @@ const navLinks = Array.from(document.querySelectorAll(".sidebar-nav a"));
 const langButtons = Array.from(document.querySelectorAll(".lang-toggle button"));
 const descriptionMeta = document.querySelector('meta[name="description"]');
 const isPdfMode = new URLSearchParams(window.location.search).get("pdf") === "1";
+const autoPrintMode = new URLSearchParams(window.location.search).get("print") === "1";
+const pdfExportButton = document.querySelector("[data-pdf-export]");
 const projectList = document.querySelector("#project-list");
 const projectSpotlight = document.querySelector("#project-spotlight");
 const projectFilters = document.querySelector("#project-filters");
@@ -29,6 +31,7 @@ const translations = {
     nav_details: "ㄴ Details",
     nav_skills: "Skills",
     nav_contents: "ㄴ Contents",
+    pdf_export_button: "PDF 저장",
     hello: "안녕하세요, 박주원입니다.",
     hero_lead: "End-to-End DevOps.",
     hero_copy_1:
@@ -132,6 +135,7 @@ const translations = {
     nav_details: "ㄴ Details",
     nav_skills: "Skills",
     nav_contents: "ㄴ Contents",
+    pdf_export_button: "Save PDF",
     hello: "Hello, I'm Juwon Park.",
     hero_lead: "End-to-End DevOps.",
     hero_copy_1:
@@ -1125,6 +1129,23 @@ langButtons.forEach((button) => {
     applyLanguage(button.dataset.lang || "ko");
   });
 });
+
+if (pdfExportButton) {
+  pdfExportButton.addEventListener("click", () => {
+    const pdfUrl = new URL(window.location.href);
+    pdfUrl.searchParams.set("pdf", "1");
+    pdfUrl.searchParams.set("print", "1");
+    window.open(pdfUrl.toString(), "_blank", "noopener,noreferrer");
+  });
+}
+
+if (isPdfMode && autoPrintMode) {
+  window.addEventListener("load", () => {
+    window.setTimeout(() => {
+      window.print();
+    }, 350);
+  });
+}
 
 const savedLanguage = window.localStorage.getItem("portfolio-lang") || "ko";
 applyLanguage(savedLanguage);
