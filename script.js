@@ -2,6 +2,7 @@ const sections = Array.from(document.querySelectorAll(".section"));
 const navLinks = Array.from(document.querySelectorAll(".sidebar-nav a"));
 const langButtons = Array.from(document.querySelectorAll(".lang-toggle button"));
 const descriptionMeta = document.querySelector('meta[name="description"]');
+const isPdfMode = new URLSearchParams(window.location.search).get("pdf") === "1";
 const projectList = document.querySelector("#project-list");
 const projectSpotlight = document.querySelector("#project-spotlight");
 const projectFilters = document.querySelector("#project-filters");
@@ -11,6 +12,10 @@ let currentLanguage = "ko";
 let activeProjectSlug = "terratform";
 let activeProjectFilter = "all";
 let activeSkillSlug = "terraform";
+
+if (isPdfMode) {
+  document.body.classList.add("pdf-export");
+}
 
 const translations = {
   ko: {
@@ -83,8 +88,22 @@ const translations = {
       "컴퓨터공학 기반 학업과 실무형 교육 과정을 통해 Python, Django, HTML, JavaScript, 데이터베이스 기초를 체계적으로 학습했습니다.",
     experience_education_block_title: "학력 / 교육",
     experience_education_item_1: "광운대학교 정보과학교육원 · GPA 4.04 / 4.5",
-    experience_education_item_2: "Bosei Sports College 수료 · 2023.08 - 2023.10",
-    experience_education_item_3: "Python 강사 과정 · 2024.07 - 2024.09",
+    experience_education_item_2: "Python 강사 과정 · 2024.07 - 2024.09",
+    experience_bosei_role: "Bosei Sports College",
+    experience_bosei_org: "Denmark",
+    experience_bosei_period: "2023.08 - 2023.10",
+    experience_bosei_summary:
+      "덴마크 Bosei Sports College에서 자기개발, 공동체 협업, 스포츠·건강·문화 이론, 야외 체험, 건강관리 프로그램을 수료했습니다.",
+    experience_bosei_block_title: "주요 학습 내용",
+    experience_bosei_item_1:
+      "Self Development: 자기관리, 목표 설정, 공동체 생활을 통한 자기개발 역량 강화 프로그램",
+    experience_bosei_item_2:
+      "Assemblies: 공동체 활동을 통한 소통 능력 및 협업 역량 향상 프로그램",
+    experience_bosei_item_3: "Lectures: 스포츠·건강·문화 관련 이론 강의 학습",
+    experience_bosei_item_4:
+      "Outdoor Activities: 야외 체험 활동을 통한 도전정신, 협동심, 적응력 강화",
+    experience_bosei_item_5:
+      "Health and Fitness: 체력 증진, 건강관리, 운동 습관 형성을 위한 프로그램",
     section_eyebrow_projects: "Projects",
     section_title_projects: "Projects",
     projects_copy:
@@ -172,8 +191,23 @@ const translations = {
       "I studied computer engineering and completed practical training covering Python, Django, HTML, JavaScript, and database fundamentals.",
     experience_education_block_title: "Education / Training",
     experience_education_item_1: "Kwangwoon University Institute of Information Science Education · GPA 4.04 / 4.5",
-    experience_education_item_2: "Completed Bosei Sports College · 2023.08 - 2023.10",
-    experience_education_item_3: "Python Instructor Course · 2024.07 - 2024.09",
+    experience_education_item_2: "Python Instructor Course · 2024.07 - 2024.09",
+    experience_bosei_role: "Bosei Sports College",
+    experience_bosei_org: "Denmark",
+    experience_bosei_period: "2023.08 - 2023.10",
+    experience_bosei_summary:
+      "Completed a program at Bosei Sports College in Denmark focused on self-development, community collaboration, sports and wellness theory, outdoor activities, and health management.",
+    experience_bosei_block_title: "Key Learning Areas",
+    experience_bosei_item_1:
+      "Self Development: self-management, goal setting, and growth through community living",
+    experience_bosei_item_2:
+      "Assemblies: communication and collaboration through community activities",
+    experience_bosei_item_3:
+      "Lectures: theory sessions on sports, health, and culture",
+    experience_bosei_item_4:
+      "Outdoor Activities: challenge, teamwork, and adaptability through outdoor experience",
+    experience_bosei_item_5:
+      "Health and Fitness: programs for fitness, health management, and exercise habits",
     section_eyebrow_projects: "Projects",
     section_title_projects: "Projects",
     projects_copy:
@@ -196,7 +230,7 @@ const translations = {
 const projectCatalog = [
   {
     slug: "terratform",
-    title: "terratform",
+    title: "Terraform 기반 AWS 인프라 운영",
     period: "2026.03",
     repoUrl: "https://github.com/juwonparkme/terratform",
     type: { ko: "infra", en: "infra" },
@@ -229,7 +263,7 @@ const projectCatalog = [
   },
   {
     slug: "quiz_ai_testpro",
-    title: "quiz_ai_testpro",
+    title: "문서 업로드형 AI 퀴즈 플랫폼",
     period: "2025.10 - 2026.03",
     repoUrl: "https://github.com/juwonparkme/quiz_ai_testpro",
     type: { ko: "backend", en: "backend" },
@@ -264,7 +298,7 @@ const projectCatalog = [
   },
   {
     slug: "ai_ppt",
-    title: "ai_ppt / SlideArchitect",
+    title: "AI 발표자료 자동 생성 웹앱",
     period: "2025.02 - 2026.03",
     repoUrl: "https://github.com/juwonparkme/ai_ppt",
     type: { ko: "automation", en: "automation" },
@@ -299,7 +333,7 @@ const projectCatalog = [
   },
   {
     slug: "cardnews_auto",
-    title: "cardnews_auto",
+    title: "음악 카드뉴스 제작 자동화 CLI",
     period: "2026.01 - 2026.03",
     repoUrl: "https://github.com/juwonparkme/cardnews_auto",
     type: { ko: "content", en: "content" },
@@ -330,7 +364,7 @@ const projectCatalog = [
   },
   {
     slug: "agent-scripts",
-    title: "agent-scripts",
+    title: "Codex 작업 규칙 · 스킬 허브",
     period: "2026.02 - 2026.03",
     repoUrl: "https://github.com/juwonparkme/agent-scripts",
     type: { ko: "tooling", en: "tooling" },
@@ -361,7 +395,7 @@ const projectCatalog = [
   },
   {
     slug: "ai_crawling_books",
-    title: "ai_crawling_books",
+    title: "도서 PDF 후보 탐색 CLI",
     period: "2026.02 - 2026.03",
     repoUrl: "https://github.com/juwonparkme/ai_crawling_books",
     type: { ko: "crawler", en: "crawler" },
@@ -735,30 +769,6 @@ const skillsCatalog = [
           { title: "Jekyll 자동배포", url: "https://juwonpark.me/firstblogpost.html", excerpt: { ko: "블로그와 프론트엔드 배포 흐름 기록.", en: "A note on blog and frontend deployment flow." }, tags: ["JavaScript", "Frontend", "Deploy"] },
           { title: "AI 퀴즈 구조 분석", url: "https://juwonpark.me/DjangoProject.html", excerpt: { ko: "프론트와 백엔드 흐름을 함께 본 구조 분석.", en: "A structural analysis covering both frontend and backend flow." }, tags: ["JavaScript", "Frontend", "Backend"] },
           { title: "Text Manipulation", url: "https://juwonpark.me/Text_Manipulation.html", excerpt: { ko: "JS/TS 기반 텍스트 처리 흐름과 연관된 기록.", en: "A note related to JS/TS text processing workflow." }, tags: ["JavaScript", "Automation", "Tooling"] },
-        ],
-      },
-      {
-        slug: "lang-html",
-        label: { ko: "HTML", en: "HTML" },
-        summary: {
-          ko: "juwon_blog, ai_ppt, quiz_ai_testpro 기준으로 확인된 마크업 언어입니다.",
-          en: "A markup language confirmed from juwon_blog, ai_ppt, and quiz_ai_testpro.",
-        },
-        posts: [
-          { title: "Jekyll 자동배포", url: "https://juwonpark.me/firstblogpost.html", excerpt: { ko: "정적 사이트 구조와 블로그 퍼블리싱 기록.", en: "A post on static site structure and blog publishing." }, tags: ["HTML", "Jekyll", "Blog"] },
-          { title: "AI 퀴즈 구조 분석", url: "https://juwonpark.me/DjangoProject.html", excerpt: { ko: "웹 화면과 백엔드 흐름을 함께 본 글.", en: "A web app structure post covering UI and backend flow." }, tags: ["HTML", "Frontend", "Django"] },
-        ],
-      },
-      {
-        slug: "lang-css",
-        label: { ko: "CSS", en: "CSS" },
-        summary: {
-          ko: "juwon_blog, ai_ppt, quiz_ai_testpro 기준으로 확인된 스타일 언어입니다.",
-          en: "A styling language confirmed from juwon_blog, ai_ppt, and quiz_ai_testpro.",
-        },
-        posts: [
-          { title: "Jekyll 자동배포", url: "https://juwonpark.me/firstblogpost.html", excerpt: { ko: "블로그 UI와 퍼블리싱 흐름 기록.", en: "A note on blog UI and publishing flow." }, tags: ["CSS", "Jekyll", "Blog"] },
-          { title: "AI 퀴즈 구조 분석", url: "https://juwonpark.me/DjangoProject.html", excerpt: { ko: "웹 서비스 UI 구조와 연관된 글.", en: "A post related to web service UI structure." }, tags: ["CSS", "Frontend", "Django"] },
         ],
       },
       {

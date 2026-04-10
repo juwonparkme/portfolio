@@ -959,3 +959,104 @@ h2 {
   }
 
 }
+
+body.pdf-export {
+  background: #ffffff;
+}
+
+body.pdf-export .shell {
+  width: 100%;
+  max-width: none;
+  display: block;
+  box-shadow: none;
+}
+
+body.pdf-export .sidebar,
+body.pdf-export .topbar {
+  display: none;
+}
+
+body.pdf-export .content {
+  padding: 0 0 2rem;
+}
+
+body.pdf-export .section {
+  opacity: 1;
+  transform: none;
+  padding: 1.2rem 0 1.8rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+body.pdf-export .projects-shell,
+body.pdf-export .skills-shell {
+  grid-template-columns: 1fr;
+}
+
+body.pdf-export .project-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.pdf-export .project-spotlight {
+  position: static;
+  box-shadow: none;
+}
+
+body.pdf-export .experience-card,
+body.pdf-export .project-spotlight,
+body.pdf-export .skills-spotlight,
+body.pdf-export .project-card,
+body.pdf-export .skills-post-card {
+  box-shadow: none;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: none;
+    display: block;
+    box-shadow: none;
+  }
+
+  .sidebar,
+  .topbar {
+    display: none !important;
+  }
+
+  .content {
+    padding: 0 !important;
+  }
+
+  .section {
+    opacity: 1 !important;
+    transform: none !important;
+    padding: 1.2rem 0 1.8rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .projects-shell,
+  .skills-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .project-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .project-spotlight {
+    position: static;
+  }
+
+  .experience-card,
+  .project-spotlight,
+  .skills-spotlight,
+  .project-card,
+  .skills-post-card {
+    box-shadow: none !important;
+  }
+}
