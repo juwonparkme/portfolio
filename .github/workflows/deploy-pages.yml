@@ -38,6 +38,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html styles.css script.js README.md _site/
+          cp -R assets _site/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
