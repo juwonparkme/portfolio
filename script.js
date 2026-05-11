@@ -377,6 +377,39 @@ const projectCatalog = [
     related: [],
   },
   {
+    slug: "symphony",
+    title: "Symphony 에이전트 오케스트레이션",
+    period: "2026.05",
+    repoUrl: "https://github.com/juwonparkme/symphony",
+    type: { ko: "tooling", en: "tooling" },
+    filter: "tooling",
+    subtitle: { ko: "Elixir / Linear / Codex App Server", en: "Elixir / Linear / Codex App Server" },
+    cardSummary: {
+      ko: "Linear 보드를 폴링해 이슈별 격리 워크스페이스를 만들고 Codex 작업 세션을 실행하는 에이전트 오케스트레이터.",
+      en: "An agent orchestrator that polls Linear, creates isolated workspaces per issue, and runs Codex work sessions.",
+    },
+    summary: {
+      ko: "Symphony는 Linear 이슈를 기준으로 작업을 감지하고, 이슈별 워크스페이스를 만든 뒤 Codex App Server 세션을 실행하는 Elixir/OTP 기반 오케스트레이션 프로젝트입니다. WORKFLOW.md 설정, 프로젝트별 env 프리셋, workspace hook, 재시도/상태 전이, Phoenix LiveView 관측 대시보드까지 포함해 에이전트 작업을 사람이 직접 감시하지 않아도 추적 가능한 운영 단위로 묶었습니다.",
+      en: "Symphony is an Elixir/OTP orchestration project that detects work from Linear issues, creates per-issue workspaces, and launches Codex App Server sessions. It ties together WORKFLOW.md configuration, per-project env presets, workspace hooks, retry/state handling, and a Phoenix LiveView observability dashboard so agent work can be tracked as an operational unit.",
+    },
+    tags: ["Elixir", "OTP", "Phoenix LiveView", "Linear", "Codex App Server", "YAML", "SSH", "GitHub CLI"],
+    highlights: {
+      ko: [
+        "Linear active/terminal 상태를 기준으로 작업 시작, 재시도, 종료 흐름을 관리",
+        "WORKFLOW.md YAML front matter와 projects/*.env 프리셋으로 OTT, Quiz, ai_ppt, blog 작업 설정 분리",
+        "이슈별 workspace hook, danger-full-access Codex 실행, LiveView/JSON API 관측 경로 구성",
+      ],
+      en: [
+        "Manages start, retry, and shutdown flow from Linear active/terminal states",
+        "Separates OTT, Quiz, ai_ppt, and blog run settings through WORKFLOW.md YAML front matter and projects/*.env presets",
+        "Provides per-issue workspace hooks, danger-full-access Codex execution, and LiveView/JSON API observability paths",
+      ],
+    },
+    related: [
+      { label: "GitHub Repository", url: "https://github.com/juwonparkme/symphony" },
+    ],
+  },
+  {
     slug: "ai_crawling_books",
     title: "도서 PDF 후보 탐색 CLI",
     period: "2026.02 - 2026.03",
@@ -708,6 +741,34 @@ const skillsCatalog = [
           },
         ],
       },
+      {
+        slug: "agent-orchestration",
+        label: { ko: "Agent Orchestration", en: "Agent Orchestration" },
+        summary: {
+          ko: "Linear, Codex App Server, workspace hook을 묶어 자동 구현 세션을 운영하는 기술 묶음입니다.",
+          en: "A skill area for operating autonomous implementation sessions across Linear, Codex App Server, and workspace hooks.",
+        },
+        posts: [
+          {
+            title: "Symphony",
+            url: "https://github.com/juwonparkme/symphony",
+            excerpt: {
+              ko: "Linear 이슈를 폴링하고 Codex 세션을 이슈별 워크스페이스에서 실행하는 Elixir/OTP 오케스트레이터.",
+              en: "An Elixir/OTP orchestrator that polls Linear issues and runs Codex sessions in per-issue workspaces.",
+            },
+            tags: ["Elixir", "Linear", "Codex"],
+          },
+          {
+            title: "Symphony WORKFLOW 설정",
+            url: "https://github.com/juwonparkme/symphony/blob/main/elixir/WORKFLOW.md",
+            excerpt: {
+              ko: "프로젝트별 env 프리셋, workspace root, hook, max turns, Codex sandbox policy를 한 설정으로 묶은 운영 계약.",
+              en: "An operating contract that combines per-project env presets, workspace roots, hooks, max turns, and Codex sandbox policy.",
+            },
+            tags: ["Workflow", "YAML", "Ops"],
+          },
+        ],
+      },
     ],
   },
   {
@@ -787,6 +848,25 @@ const skillsCatalog = [
         },
         posts: [
           { title: "Terraform 1", url: "https://juwonpark.me/Terraform_1.html", excerpt: { ko: "Terraform module과 backend 구성을 직접 다룬 기록.", en: "A post directly covering Terraform modules and backend configuration." }, tags: ["HCL", "Terraform", "IaC"] },
+        ],
+      },
+      {
+        slug: "lang-elixir",
+        label: { ko: "Elixir", en: "Elixir" },
+        summary: {
+          ko: "Symphony 저장소에서 확인된 OTP 기반 장기 실행 오케스트레이션 언어입니다.",
+          en: "An OTP-based orchestration language confirmed from the Symphony repository.",
+        },
+        posts: [
+          {
+            title: "Symphony",
+            url: "https://github.com/juwonparkme/symphony",
+            excerpt: {
+              ko: "Linear 폴링, 워크스페이스 수명주기, Codex App Server 실행, LiveView 관측 UI를 Elixir로 구현한 프로젝트.",
+              en: "An Elixir project for Linear polling, workspace lifecycle, Codex App Server execution, and LiveView observability.",
+            },
+            tags: ["Elixir", "OTP", "Phoenix"],
+          },
         ],
       },
       {
