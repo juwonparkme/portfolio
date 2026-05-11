@@ -249,6 +249,37 @@ const projectCatalog = [
     ],
   },
   {
+    slug: "ott_recommend_ai",
+    title: "OTT 추천 AI 플랫폼",
+    period: "2026.04 - 2026.05",
+    repoUrl: "https://movie.juwonpark.me",
+    type: { ko: "backend", en: "backend" },
+    filter: "backend",
+    subtitle: { ko: "Django / Content Recommendation", en: "Django / Content Recommendation" },
+    cardSummary: {
+      ko: "영화, 드라마, 도서를 통합 카탈로그로 탐색하고 평점, 시청 상태, 컬렉션 기반 추천 흐름을 제공하는 Django 앱.",
+      en: "A Django app for browsing movies, TV dramas, and books through a unified catalog with ratings, watch states, collections, and recommendations.",
+    },
+    summary: {
+      ko: "OTT Recommend AI는 영화, 드라마, 도서를 하나의 콘텐츠 카탈로그로 묶어 검색, 랭킹, 상세 페이지, 평점, 보고싶어요/보는 중 상태, 개인 컬렉션을 제공하는 Django 기반 추천/탐색 플랫폼입니다. TMDB와 Kakao Book 데이터를 갱신하는 관리 명령, 운영 배포 스크립트, GitHub Actions 기반 CI/CD와 smoke test까지 포함해 실제 운영 흐름을 같이 구성했습니다.",
+      en: "OTT Recommend AI is a Django-based recommendation and discovery platform that unifies movies, TV dramas, and books into one content catalog. It supports search, rankings, detail pages, ratings, watch states, personal collections, data refresh commands for TMDB and Kakao Book data, and an operations path with deployment scripts, GitHub Actions CI/CD, and smoke tests.",
+    },
+    tags: ["Django", "Python", "TMDB API", "Kakao Book API", "GitHub Actions", "Gunicorn", "Nginx", "Grafana Loki"],
+    highlights: {
+      ko: [
+        "영화, 드라마, 도서를 content_type/content_id 기반 공통 모델로 정규화",
+        "TMDB 영화/TV와 Kakao Book Search 데이터 갱신용 Django management command 구성",
+        "self-hosted runner 배포, Gunicorn 실행, Nginx proxy, 운영 smoke test까지 CI/CD에 연결",
+      ],
+      en: [
+        "Normalized movies, TV dramas, and books through a shared content_type/content_id model",
+        "Built Django management commands for refreshing TMDB movie/TV and Kakao Book Search data",
+        "Connected CI/CD to a self-hosted runner deployment path with Gunicorn, Nginx proxying, and production smoke tests",
+      ],
+    },
+    related: [],
+  },
+  {
     slug: "ai_ppt",
     title: "AI 발표자료 자동 생성 웹앱",
     period: "2025.02 - 2026.03",
